@@ -1,0 +1,48 @@
+/* Query 1 - 1th insight */
+SELECT c.FirstName,
+       c.LastName,
+       c.Email,
+       g.Name,
+       COUNT(t.TrackId) tracks,
+       inv.total
+FROM Customer c
+JOIN Invoice inv ON c.CustomerId = inv.CustomerId
+JOIN InvoiceLine LINE ON inv.InvoiceId = line.InvoiceId
+JOIN Track t ON line.TrackId = t.TrackId
+JOIN Genre g ON t.GenreId = g.GenreId
+WHERE g.Name = "Rock"
+GROUP BY 1,
+         2
+ORDER BY 6 DESC
+LIMIT 5;
+
+
+/* Query 2 - 2th insight*/
+SELECT inv.BillingCountry,
+       COUNT(inv.InvoiceId) AS Invoices,
+       SUM(inv.total) AS sum_of_all_invoices
+FROM Invoice inv
+JOIN Customer c ON inv.CustomerId = c.CustomerId
+GROUP BY inv.BillingCountry
+ORDER BY 2 DESC
+LIMIT 5;
+
+
+/* Query 3 - 3th insight*/
+SELECT count(*) COUNT,
+                med.Name
+FROM MediaType med
+JOIN Track t ON med.MediaTypeId = t.MediaTypeId
+GROUP BY 2
+ORDER BY 1 DESC;
+
+
+/* Query 4 - 4th insight*/
+SELECT al.Title,
+       count(t.TrackId) AS COUNT
+FROM Album al
+JOIN Track t ON al.AlbumId = t.AlbumId
+JOIN Genre g ON t.GenreId = g.GenreId
+WHERE g.Name = "Jazz"
+GROUP BY 1
+ORDER BY 2 DESC;
