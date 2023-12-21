@@ -13,5 +13,3 @@ Explore the realm of Business Analytics through my journey in the Udacity Busine
 
 ## **Project 4: Crafting Interactive Data Dashboards with Tableau**
 >Create immersive dashboards with Tableau, unraveling insights from a dataset showcasing US flight delays. Discover airline and airport performance, ideal flight times, and more.
-
-
